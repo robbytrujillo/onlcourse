@@ -38,6 +38,11 @@ class RegisteredUserController extends Controller
         ]);
 
         // proses upload file kepada project laravel kita
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('avatars', 'public');
+        } else {
+            $avatarPath = 'images/avatar-default.png';
+        }
 
         $user = User::create([
             'name' => $request->name,
