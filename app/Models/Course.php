@@ -11,5 +11,15 @@ class Course extends Model
     //
     use HasFactory, SoftDeletes;
 
+    // cara pertama dalam mempersiapkan mass assignment
+    protected $fillable = [
+        'name',
+        'slug',
+        'about',
+        'path_trailer',
+        'thumbnail',
+        'teacher_id',
+        'category_id',
+    ];
     
 }
