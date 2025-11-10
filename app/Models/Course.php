@@ -21,5 +21,24 @@ class Course extends Model
         'teacher_id',
         'category_id',
     ];
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
     
+    public function teacher() {
+        return $this->belongsTo(Teacher::class);
+    }
+    
+    public function course_videos() {
+        return $this->hasMany(CourseVideo::class);
+    }
+    
+    public function course_keypoints() {
+        return $this->hasMany(CourseKeyPoint::class);
+    }
+    
+    public function students() {
+        return $this->belongsToMany(User::class, 'course_students');
+    }
 }

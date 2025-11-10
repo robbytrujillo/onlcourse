@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class CourseKeyPoint extends Model
+class CourseVideo extends Model
 {
     //
     use HasFactory, SoftDeletes;
 
-    // cara pertama dalam mempersiapkan mass assignment
-    protected $fillable = [
+     protected $fillable = [
         'name',
+        'path_video',
         'course_id',
     ];
 }

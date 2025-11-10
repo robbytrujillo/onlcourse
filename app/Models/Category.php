@@ -22,4 +22,8 @@ class Category extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function courses() {
+        return $this->hasMany(Course::class);
+    }
 }
