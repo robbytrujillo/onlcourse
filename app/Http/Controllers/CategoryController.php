@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -32,26 +33,28 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        //
-        
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'icon' => ['required', 'image', 'mimes:png,jpg,jpeg,svg'],
-        ]);
+        // tidak perlu melakukan ini lagi
+        // $validated = $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'icon' => ['required', 'image', 'mimes:png,jpg,jpeg,svg'],
+        // ]);
 
-        DB::transaction(function () use ($validated, $request) {
-           if ($request->hasFile('icon')) {
-                $iconPath = $request->file('icon')->store('icons', 'public');
-                $validated['icon'] = $iconPath;
-            } else {
-                $iconPath = 'images/icon-default.png';
-            } 
+        DB::transaction(function () use ($request) {    
 
-            $validated['slug'] = Str::slug($validated['name']);
+            $validated = $request->validated();
 
-            $category = Category::create($validated);
+            if ($request->hasFile('icon')) {
+                    $iconPath = $request->file('icon')->store('icons', 'public');
+                    $validated['icon'] = $iconPath;
+                } else {
+                    $iconPath = 'images/icon-default.png';
+                } 
+
+                $validated['slug'] = Str::slug($validated['name']);
+
+                $category = Category::create($validated);
         });
 
         return redirect()->route('admin.categories.index');
