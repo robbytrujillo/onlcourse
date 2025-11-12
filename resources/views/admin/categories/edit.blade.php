@@ -30,7 +30,7 @@
                     <div class="mt-4">
                         <x-input-label for="icon" :value="__('icon')" />
                         <img src="{{ Storage::url($category->icon) }}" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]">
-                        <x-text-input id="icon" class="block w-full mt-1" type="file" name="icon" required autofocus autocomplete="icon" />
+                        <x-text-input id="icon" class="block w-full mt-1" type="file" name="icon" autofocus autocomplete="icon" />
                         <x-input-error :messages="$errors->get('icon')" class="mt-2" />
                     </div>
 
