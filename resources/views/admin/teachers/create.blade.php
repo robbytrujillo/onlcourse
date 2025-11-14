@@ -22,7 +22,7 @@
 
                     <div>
                         <x-input-label for="email" :value="__('email')" />
-                        <x-text-input id="email" class="block w-full mt-1" type="text" email="text" :value="old('email')" required autofocus autocomplete="email" />
+                        <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required autofocus autocomplete="email" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     </div>
 
