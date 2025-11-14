@@ -60,7 +60,14 @@ class TeacherController extends Controller
 
             Teacher::create($validated);
             
+            if ($user->hasRole('student')) {
+                $user->removeRole('student');
+            }
+
+            $user->assignRole('teacher');
         });
+
+        return redirect()->route('admin.teachers.index');
     }
 
     /**
