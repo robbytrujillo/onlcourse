@@ -56,6 +56,10 @@ class TeacherController extends Controller
 
         DB::transaction(function () use ($user, $validated) {
             $validated['user_id'] = $user->id;
+            $validated['is_active'] = true;
+
+            Teacher::create($validated);
+            
         });
     }
 
