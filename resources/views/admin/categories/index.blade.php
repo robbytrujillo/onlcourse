@@ -42,7 +42,7 @@
                     
                 @empty
                     <p>
-                        Tidak ada data kategori terbaru
+                        There is no recent category data.
                     </p>
                 @endforelse
             </div>
