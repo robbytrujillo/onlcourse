@@ -107,5 +107,17 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        DB::beginTransaction();
+
+        try {
+            $category->delete();
+            DB::commit();
+
+            return redirect()->route('admin.categories.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->route('admin.categories.index')->with('error', 'An error occurs');
+        }
     }
 }
