@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Course;
+use App\Models\Teacher;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,6 +51,11 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+
+        if (!$teacher) {
+            return redirect()->route('admin.courses.index')->withErrors('Unauthorized or invalid teacher.');
+        }
     }
 
     /**
