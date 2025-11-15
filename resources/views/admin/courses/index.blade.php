@@ -4,7 +4,7 @@
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 {{ __('Manage Courses') }}
             </h2>
-            <a href="#" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+            <a href="{{ route('admin.courses.create') }}" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                 Add New
             </a>
         </div>
@@ -19,21 +19,21 @@
                         <div class="flex flex-row items-center gap-x-3">
                             <img src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?q=80&w=3426&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="rounded-2xl object-cover w-[120px] h-[90px]">
                             <div class="flex flex-col">
-                                <h3 class="text-xl font-bold text-indigo-950">Jumping Jack</h3>
-                                <p class="text-sm text-slate-500">Cardio</p>
+                                <h3 class="text-xl font-bold text-indigo-950">{{ $course->name }}</h3>
+                                <p class="text-sm text-slate-500">{{ $course->category->name }}</p>
                             </div>
                         </div>
                         <div class="flex-col hidden md:flex">
                             <p class="text-sm text-slate-500">Students</p>
-                            <h3 class="text-xl font-bold text-indigo-950">183409</h3>
+                            <h3 class="text-xl font-bold text-indigo-950">{{ $course->students->count() }}</h3>
                         </div>
                         <div class="flex-col hidden md:flex">
                             <p class="text-sm text-slate-500">Videos</p>
-                            <h3 class="text-xl font-bold text-indigo-950">193</h3>
+                            <h3 class="text-xl font-bold text-indigo-950">{{ $course->course_videos->count() }}</h3>
                         </div>
                         <div class="flex-col hidden md:flex">
                             <p class="text-sm text-slate-500">Teacher</p>
-                            <h3 class="text-xl font-bold text-indigo-950">Annima Poppo</h3>
+                            <h3 class="text-xl font-bold text-indigo-950">{{ $course->teacher->user->name }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
                             <a href="#" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
@@ -49,7 +49,7 @@
                         </div>
                     </div>                    
                 @empty
-                    <p>Course data is not yet available</p>
+                    <p>No courses have been added yet</p>
                 @endforelse
                 
             </div>
