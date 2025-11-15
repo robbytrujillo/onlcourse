@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Teacher;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreCourseRequest;
 
 class CourseController extends Controller
 {
@@ -48,7 +51,7 @@ class CourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCourseRequest $request)
     {
         //
         $teacher = Teacher::where('user_id', Auth::user()->id)->first();
@@ -56,6 +59,20 @@ class CourseController extends Controller
         if (!$teacher) {
             return redirect()->route('admin.courses.index')->withErrors('Unauthorized or invalid teacher.');
         }
+
+        DB::transaction(function () use ($request, $teacher) {
+            $validated = $request->validated();
+
+            if ($request->hasFile('thumbnail')) {
+                $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+                $validated['thumbnail'] = $thumbnailPath;
+            }
+
+            $validated['slug'] = Str::slug($validated['name']);
+            $validated['teacher_id'] = $teacher->id;
+
+            $course = Course::create($validated);
+        });
     }
 
     /**
