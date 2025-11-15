@@ -22,6 +22,7 @@
                             <img src="{{ Storage::url($teacher->user->avatar) }}" alt="" class="rounded-2xl object-cover w-[90px] h-[90px]}">
                             <div class="flex flex-col">
                                 <h3 class="text-xl font-bold text-indigo-950">{{ $teacher->user->name }}</h3>
+                                <p class="text-sm text-slate-500">{{ $teacher->user->occupation }}</p>
                             </div>
                         </div> 
                         <div class="flex-col hidden md:flex">
@@ -29,7 +30,7 @@
                             <h3 class="text-xl font-bold text-indigo-950">{{ $teacher->created_at }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
-                            <form action="#" method="POST">
+                            <form action="{{ route('admin.teachers.destroy', $teacher) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="px-6 py-4 font-bold text-white bg-red-700 rounded-full">

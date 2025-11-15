@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // use Illuminate\Foundation\Auth\User;
 use App\Http\Requests\StoreTeacherRequest;
+use Illuminate\Validation\ValidationException;
 
 class TeacherController extends Controller
 {
@@ -101,5 +102,21 @@ class TeacherController extends Controller
     public function destroy(Teacher $teacher)
     {
         //
+        try {
+            $teacher->delete();
+
+            $user = \App\Models\User::find($teacher->user_id);
+            $user->removeRole('teacher');
+            $user->assignRole('student');
+
+            return redirect()->back();
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            $error = ValidationException::withMessages([
+                'system_error' => ['System error!' . $e->getMessage()],
+            ]);
+            throw $error;
+        }
     }
 }
