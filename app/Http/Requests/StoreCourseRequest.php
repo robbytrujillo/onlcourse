@@ -26,9 +26,14 @@ class StoreCourseRequest extends FormRequest
             'name' => 'required|string|max:255',
             'path_trailer' => 'required|string|max:255',
             'about' => 'required|string',
-            'category_id' => 'required|integer',
+            // 'category_id' => 'required|integer',
+            'category_id'   => 'required|exists:categories,id',
             'thumbnail' => 'required|image|mimes:png,jpg,jpeg,svg',
-            'course_keypoints.*' => 'required|string|max:255',
+            // 'course_keypoints.*' => 'required|string|max:255',
+
+             // keypoint boleh kosong, yang terisi saja disimpan
+            'course_keypoints' => 'nullable|array',
+            'course_keypoints.*' => 'nullable|string|max:255',
         ];
     }
 }

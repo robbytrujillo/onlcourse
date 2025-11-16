@@ -27,10 +27,17 @@
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="thumbnail" :value="__('thumbnail')" />
+                        <x-input-label for="thumbnail" :value="__('Thumbnail')" />
                         <x-text-input id="thumbnail" class="block w-full mt-1" type="file" name="thumbnail" required autofocus autocomplete="thumbnail" />
                         <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />
                     </div>
+
+                    <div class="mt-4">
+                        <x-input-label for="path_trailer" :value="__('Path_trailer')" />
+                        <x-text-input id="path_trailer" class="block w-full mt-1" type="text" name="path_trailer" :value="old('path_trailer')" required autofocus autocomplete="path_trailer" />
+                        <x-input-error :messages="$errors->get('path_trailer')" class="mt-2" />
+                    </div>
+                    
 {{--  
                     <div class="mt-4">
                         <x-input-label for="teacher" :value="__('teacher')" />
@@ -53,7 +60,7 @@
                     </div>  --}}
 
                     <div class="mt-4">
-                        <x-input-label for="category" :value="__('category')" />
+                        <x-input-label for="category" :value="__('Category')" />
                         
                         <select name="category_id" id="category_id" class="w-full py-3 pl-3 border rounded-lg border-slate-300">
                             <option value="">Choose category</option>
@@ -67,7 +74,7 @@
                     </div>
 
                     <div class="mt-4">
-                        <x-input-label for="about" :value="__('about')" />
+                        <x-input-label for="about" :value="__('About')" />
                         <textarea name="about" id="about" cols="30" rows="5" class="w-full border border-slate-300 rounded-xl"></textarea>
                         <x-input-error :messages="$errors->get('about')" class="mt-2" />
                     </div>
@@ -77,7 +84,7 @@
                     <div class="mt-4">
                         
                         <div class="flex flex-col gap-y-5">
-                            <x-input-label for="keypoints" :value="__('keypoints')" />
+                            <x-input-label for="keypoints" :value="__('Keypoints')" />
                             @for ($i = 0; $i < 4; $i++)
                                 <input type="text" class="py-3 border rounded-lg border-slate-300" placeholder="Write your copywriting" name="course_keypoints[]">
                             @endfor

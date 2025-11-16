@@ -24,7 +24,7 @@ class CourseController extends Controller
 
         $user = Auth::user();
 
-        $query = Course::with(['category', 'teacher', 'student'])->orderByDesc('id');
+        $query = Course::with(['category', 'teacher', 'students'])->orderByDesc('id');
 
         if ($user->hasRole('teacher')) {
             $query->whereHas('teacher', function($query) use ($user) {
@@ -69,10 +69,21 @@ class CourseController extends Controller
             }
 
             $validated['slug'] = Str::slug($validated['name']);
+
             $validated['teacher_id'] = $teacher->id;
 
             $course = Course::create($validated);
+
+            if (!empty($validated['course_keypoints'])) {
+                foreach($validated['course_keypoints'] as $keypointText) {
+                    $course->course_keypoints()->create([
+                        'name' => $keypointText,
+                    ]);
+                }
+            }
         });
+
+        return redirect()->route('admin.courses.index');
     }
 
     /**
@@ -105,5 +116,17 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         //
+         DB::beginTransaction();
+
+        try {
+            $course->delete();
+            DB::commit();
+
+            return redirect()->route('admin.courses.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return redirect()->route('admin.courses.index')->with('error', 'An error occurs');
+        }
     }
 }
