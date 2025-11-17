@@ -29,7 +29,7 @@
                     <div class="mt-4">
                         <x-input-label for="thumbnail" :value="__('Thumbnail')" />
                         <img src="{{ Storage::url($course->thumbnail) }}" alt="" class="rounded-2xl object-cover w-[120px] h-[90px]}">
-                        <x-text-input id="thumbnail" class="block w-full mt-1" type="file" name="thumbnail" required autofocus autocomplete="thumbnail" />
+                        <x-text-input id="thumbnail" class="block w-full mt-1" type="file" name="thumbnail" autofocus autocomplete="thumbnail" />
                         <x-input-error :messages="$errors->get('thumbnail')" class="mt-2" />
                     </div>
 
@@ -89,7 +89,9 @@
                             @forelse($course->course_keypoints as $keypoint)
                                 <input type="text" class="py-3 border rounded-lg border-slate-300" value="{{ $keypoint->name }}" name="course_keypoints[]">
                             @empty
-                            
+                                <p>
+                                    Data Keypoint
+                                </p>
                             @endforelse
                         </div>
                         <x-input-error :messages="$errors->get('keypoints')" class="mt-2" />
