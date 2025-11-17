@@ -43,27 +43,27 @@
                         <h3 class="text-xl font-bold text-indigo-950">Course Videos</h3>
                         <p class="text-sm text-slate-500">{{ $course->course_videos->count() }} Total Videos</p>
                     </div>
-                    <a href="#" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+                    <a href="{{ route('admin.course.add_video', $course->id) }}" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                         Add New Video
                     </a>
                 </div>
 
-                @for($i = 0; $i < 10; $i++)
+                @forelse($course->course_videos as $video)
                 <div class="flex flex-row items-center justify-between item-card gap-y-10">
                     <div class="flex flex-row items-center gap-x-3">
-                        <iframe width="560" class="rounded-2xl object-cover w-[120px] h-[90px]" height="315" src="https://www.youtube-nocookie.com/embed/xsg9BDiwiJE?si=vKiuNGVjDDDJWOU3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" class="rounded-2xl object-cover w-[120px] h-[90px]" height="315" src="https://www.youtube.com/embed/{{ $video->path_video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         <div class="flex flex-col">
-                            <h3 class="text-xl font-bold text-indigo-950">Install Figma Mac OS</h3>
-                            <p class="text-sm text-slate-500">Mastering UI UX 101</p>
+                            <h3 class="text-xl font-bold text-indigo-950">{{ $video->name }}</h3>
+                            <p class="text-sm text-slate-500">{{ $video->course->name }}</p>
                         </div>
                     </div>
 
                     
                     <div class="flex flex-row items-center gap-x-3">
-                        <a href="#" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+                        <a href="{{ route('admin.course_videos.edit', $video) }}" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                             Edit Video
                         </a>
-                        <form action="#" method="POST">
+                        <form action="{{ route('admin.course_videos.destroy', $video) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="px-6 py-4 font-bold text-white bg-red-700 rounded-full">
@@ -77,7 +77,10 @@
                     </div>
                     
                 </div>
-                @endfor
+                
+                @empty
+                    <p>Data Kosong</p>
+                @endforelse
                 
             </div>
         </div>
