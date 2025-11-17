@@ -101,6 +101,9 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         //
+        $categories = Category::all();
+        
+        return view('admin.courses.edit', compact('course', 'categories'));
     }
 
     /**

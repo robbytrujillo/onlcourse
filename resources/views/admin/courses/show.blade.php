@@ -23,7 +23,7 @@
                         <h3 class="text-xl font-bold text-indigo-950">{{ $course->students->count() }}</h3>
                     </div>
                     <div class="flex flex-row items-center gap-x-3">
-                        <a href="#" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+                        <a href="{{ route('admin.courses.edit', $course) }}" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                             Edit Course
                         </a>
                         <form action="#" method="POST">
