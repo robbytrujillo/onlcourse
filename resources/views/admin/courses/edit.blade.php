@@ -19,6 +19,7 @@
                 
                 <form method="POST" action="{{ route('admin.courses.update', $course) }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
 
                     <div>
                         <x-input-label for="name" :value="__('Name')" />
@@ -66,7 +67,9 @@
                         <select name="category_id" id="category_id" class="w-full py-3 pl-3 border rounded-lg border-slate-300">
                             <option value="">Choose category</option>
                             @forelse($categories as $category)
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <option value="{{$category->id}}">
+                                               {{$category->name}}
+                                </option>
                             @empty
                             @endforelse
                         </select>
