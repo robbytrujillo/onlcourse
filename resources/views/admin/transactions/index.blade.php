@@ -45,7 +45,7 @@
                             <h3 class="text-xl font-bold text-indigo-950">{{ $transaction->user->name }}</h3>
                         </div>
                         <div class="flex-row items-center hidden md:flex gap-x-3">
-                            <a href="#" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
+                            <a href="{{ route('admin.subscribe_transactions.show', $transaction) }}" class="px-6 py-4 font-bold text-white bg-indigo-700 rounded-full">
                                 View Details
                             </a>
                         </div>
