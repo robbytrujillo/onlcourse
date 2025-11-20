@@ -23,6 +23,17 @@
                             <p class="text-sm text-slate-500">Total Amount</p>
                             <h3 class="text-xl font-bold text-indigo-950">Rp {{ $subscribeTransaction->total_amount }}</h3>
                         </div>
+
+                            @if ($subscribeTransaction->is_paid)
+                                <span class="w-fit px-3 py-2 text-sm font-bold text-white bg-green-500 rounded-full">
+                                    Active
+                                </span>
+                            @else
+                                <span class="w-fit px-3 py-2 text-sm font-bold text-white bg-orange-500 rounded-full">
+                                    Pending
+                                </span>
+                            @endif
+
                         <div>
                             <p class="text-sm text-slate-500">Checkout Date</p>
                             <h3 class="text-xl font-bold text-indigo-950">{{ $subscribeTransaction->created_at }}</h3>
@@ -37,7 +48,7 @@
                         </div>
                     </div>
                     <div>
-                        <img src="https://i.pinimg.com/236x/68/ed/dc/68eddcea02ceb29abde1b1c752fa29eb.jpg" alt="">
+                        <img src="{{ Storage::url($subscribeTransaction->proof) }}" alt="">
                     </div>
                 </div>
                 <hr class="my-5">
