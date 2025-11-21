@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\CourseStudent;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\CourseStudent;
+use App\Models\SubscribeTransaction;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -21,13 +24,19 @@ class DashboardController extends Controller
             });
 
             $students = CourseStudent::whereIn('course_id', $coursesQuery->select('id'))
-            ->disctinc('user_id')
+            ->distinct('user_id')
             ->count('user_id');
         } else {
-            $students = CourseStudent::disctinc('user_id')->count('user_id');
+            $students = CourseStudent::distinct('user_id')->count('user_id');
         }
 
         $courses = $coursesQuery->count();
+
+        $categories = Category::count();
+        $transactions = SubscribeTransaction::count();
+        $teachers = Teacher::count();
+
+        return view('dashboard', compact('categories', 'courses', 'transactions', 'students', 'teachers'));
     }
 
 
