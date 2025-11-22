@@ -13,7 +13,7 @@
     <div id="hero-section" class="max-w-[1200px] mx-auto w-full flex flex-col gap-10 pb-[50px] bg-[url('assets/background/Hero-Banner.png')] bg-center bg-no-repeat bg-cover rounded-[32px] overflow-hidden">
         <nav class="flex justify-between items-center pt-6 px-[50px]">
             <a href="">
-                <img src="assets/logo/logo.svg" alt="logo">
+                <img src="assets/logo/onlcourse-logo.png" alt="logo" class="flex shrink-0">
             </a>
             <ul class="flex items-center gap-[30px] text-white">
                 <li>
@@ -30,8 +30,8 @@
                 </li>
             </ul>
             <div class="flex gap-[10px] items-center">
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
+                <a href="{{ route('register') }}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
+                <a href="{{ route('login') }}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
             </div>
         </nav>
         <div class="flex flex-col items-center gap-[30px]">
@@ -154,11 +154,11 @@
                 @forelse ($courses as $course)
                     <div class="course-card w-1/3 px-3 pb-[70px] mt-[2px]">
                         <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
-                            <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
+                            <a href="{{ route('front.details', $course->slug) }}" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
                                 <img src="{{ Storage::url($course->thumbnail) }}" class="object-cover w-full h-full" alt="thumbnail">
                             </a>
                             <div class="flex flex-col px-4 gap-[10px]">
-                                <a href="details.html" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">{{ $course->name }}</a>
+                                <a href="{{ route('front.details', $course->slug) }}" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">{{ $course->name }}</a>
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
@@ -756,7 +756,7 @@
         <div class="flex justify-between">
             <a href="">
                 <div>
-                    <img src="assets/logo/logo-black.svg" alt="logo">
+                    <img src="assets/logo/onlcourse-logo-black.png" alt="logo" class="flex shrink-0">
                 </div>
             </a>
             <div class="flex flex-col gap-5">
@@ -815,7 +815,7 @@
             </div>
         </div>
         <div class="w-full h-[51px] flex items-end border-t border-[#E7EEF2]">
-            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved Alqowy BuildWithAngga 2024</p>
+            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved OnlCourse Robby Ilham 2025</p>
         </div>
     </footer>
 
