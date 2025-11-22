@@ -1,0 +1,68 @@
+/*
+|--------------------------------------------------------------------------
+| CUSTOM STYLES: MOBILE FIRST (min-width)
+| Tambahkan override Anda di sini untuk setiap breakpoint.
+|--------------------------------------------------------------------------
+*/
+
+/* --- Small devices (SM) - Tablet Kecil/Lanskap Ponsel (> 640px) --- */
+@media (min-width: 640px) {
+    /* Contoh: Mengurangi Padding Horizontal Global di Mobile */
+    /* Menargetkan elemen yang mungkin menggunakan padding besar seperti px-[50px] */
+    .container-global-padding {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Contoh: Mengatasi Hero Text Size */
+    .hero-title {
+        font-size: 2.5rem !important; /* Dari 80px/40px menjadi 40px */
+        line-height: 1.2 !important;
+    }
+}
+
+/* --- Medium devices (MD) - Tablet/Desktop Kecil (> 768px) --- */
+@media (min-width: 768px) {
+    /* Mengatasi Grid 4 kolom yang bermasalah di Mobile */
+    .grid-cols-4-responsive {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 20px !important;
+    }
+
+    /* Mengatasi Grid 3 kolom yang bermasalah di Mobile */
+    .grid-cols-3-responsive {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 20px !important;
+    }
+
+    /* Mengembalikan Padding Global ke Ukuran Sedang */
+    .container-global-padding {
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+}
+
+/* --- Large devices (LG) - Desktop Kecil (> 1024px) --- */
+@media (min-width: 1024px) {
+    /* Grid 4 kolom kembali normal */
+    .grid-cols-4-responsive {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+
+    /* Grid 3 kolom kembali normal */
+    .grid-cols-3-responsive {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* --- Extra large devices (XL) - Desktop Besar (> 1280px) --- */
+@media (min-width: 1280px) {
+    /* Padding di layar desktop sangat besar */
+    .container-global-padding {
+        padding-left: 50px !important; /* Sesuai dengan px-[50px] Anda */
+        padding-right: 50px !important;
+    }
+    .hero-title {
+        font-size: 5rem !important; /* Kembali ke ukuran desktop besar (misalnya 80px) */
+    }
+}
