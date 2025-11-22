@@ -1142,7 +1142,7 @@ video {
 }
 
 .bg-\[url\(\'assets\/background\/Hero-Banner\.png\'\)\] {
-    background-image: url("assets/background/Hero-Banner.png");
+    background-image: url("../assets/background/Hero-Banner.png");
 }
 
 .bg-gradient-to-r {
