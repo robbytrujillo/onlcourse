@@ -48,14 +48,14 @@
         <div class="relative flex gap-5 video-player flex-nowrap">
             <div class="plyr__video-embed w-full overflow-hidden relative rounded-[20px]" id="player">
                 <iframe
-                    src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                    src="https://www.youtube.com/embed/{{ $course->path_trailer }}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
                     allowfullscreen
                     allowtransparency
                     allow="autoplay"
                 ></iframe>
             </div>
             <div class="video-player-sidebar flex flex-col shrink-0 w-[330px] h-[470px] bg-[#F5F8FA] rounded-[20px] p-5 gap-5 pb-0 overflow-y-scroll no-scrollbar">
-                <p class="text-lg font-bold text-black">123 Lessons</p>
+                <p class="text-lg font-bold text-black">{{ $course->course_videos->count() }} Lessons</p>
                 <div class="flex flex-col gap-3">
                     <div class="group p-[12px_16px] flex items-center gap-[10px] bg-[#E9EFF3] rounded-full hover:bg-[#3525B3] transition-all duration-300">
                         <div class="text-black transition-all duration-300 group-hover:text-white">
@@ -127,13 +127,13 @@
     </section>
     <section id="Video-Resources" class="flex flex-col mt-5">
         <div class="max-w-[1100px] w-full mx-auto flex flex-col gap-3">
-            <h1 class="title font-extrabold text-[30px] leading-[45px]">Full-Stack JavaScript Developer 2024</h1>
+            <h1 class="title font-extrabold text-[30px] leading-[45px]">{{ $course->name }}</h1>
             <div class="flex items-center gap-5">
                 <div class="flex items-center gap-[6px]">
                     <div>
                         <img src="{{asset('assets/icon/crown.svg')}}" alt="icon">
                     </div>
-                    <p class="font-semibold">Data Science</p>
+                    <p class="font-semibold">{{ $course->category->name }}</p>
                 </div>
                 <div class="flex items-center gap-[6px]">
                     <div>
@@ -145,7 +145,7 @@
                     <div>
                         <img src="{{asset('assets/icon/profile-2user.svg')}}" alt="icon">
                     </div>
-                    <p class="font-semibold">18,409 students</p>
+                    <p class="font-semibold">{{ $course->students->count() }} students</p>
                 </div>
                 <div class="flex items-center gap-[6px]">
                     <div>
@@ -170,37 +170,26 @@
                             <div class="flex flex-col gap-5 w-[700px] shrink-0">
                                 <h3 class="text-2xl font-bold">Grow Your Career</h3>
                                 <p class="font-medium leading-[30px]">
-                                    Pada kelas ini kita akan belajar bersama dengan mentor berpengalaman dalam membangun sebuah website dengan studi kasus ujian online (computer based test) yang dapat membantu guru atau manager dalam menilai pengetahuan dari setiap student dan karyawan mereka.
+                                    {{ $course->about }}
                                 </p>
-                                <p class="font-medium leading-[30px]">
+                                {{--  <p class="font-medium leading-[30px]">
                                     Kita akan menggunakan framework php popular yaitu adalah laravel sehingga proses pengembangan website CBT menjadi lebih cepat dan mudah diperbesar bersama dengan developer/programmer lainnya suatu saat nanti. <br>
                                     Projek pada kursus online ini nanti akan terbagi oleh dua user role yaitu teacher/manager dan student/karyawan, kita akan membataskan beberapa fitur sehingga hanya bisa diakses oleh setiap role tersebut (bagus untuk user experience).
-                                </p>
+                                </p>  --}}
                                 <div class="grid grid-cols-2 gap-x-[30px] gap-y-5">
-                                    <div class="flex items-center gap-3 benefit-card">
-                                        <div class="flex w-6 h-6 shrink-0">
-                                            <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
+
+                                    @forelse ($course->course_keypoints as $keypoint)
+                                        <div class="flex items-center gap-3 benefit-card">
+                                            <div class="flex w-6 h-6 shrink-0">
+                                                <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
+                                            </div>
+                                            <p class="font-medium leading-[30px]">{{ $keypoint->name }}</p>
                                         </div>
-                                        <p class="font-medium leading-[30px]">Dolor si amet exercise better garrer axia certificate guarantee job</p>
-                                    </div>
-                                    <div class="flex items-center gap-3 benefit-card">
-                                        <div class="flex w-6 h-6 shrink-0">
-                                            <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
-                                        </div>
-                                        <p class="font-medium leading-[30px]">Dolor si amet exercise better garrer axia certificate guarantee job</p>
-                                    </div>
-                                    <div class="flex items-center gap-3 benefit-card">
-                                        <div class="flex w-6 h-6 shrink-0">
-                                            <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
-                                        </div>
-                                        <p class="font-medium leading-[30px]">Dolor si amet exercise better garrer axia certificate guarantee job</p>
-                                    </div>
-                                    <div class="flex items-center gap-3 benefit-card">
-                                        <div class="flex w-6 h-6 shrink-0">
-                                            <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
-                                        </div>
-                                        <p class="font-medium leading-[30px]">Dolor si amet exercise better garrer axia certificate guarantee job</p>
-                                    </div>
+                                    @empty
+                                        
+                                    @endforelse
+                                    
+
                                 </div>
                             </div>
                         </div>
