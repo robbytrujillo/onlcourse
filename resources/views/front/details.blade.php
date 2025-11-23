@@ -14,10 +14,10 @@
     />
 </head>
 <body class="text-black font-poppins pt-10 pb-[50px]">
-    <div id="hero-section" class="max-w-[1200px] mx-auto w-full h-[393px] flex flex-col gap-10 pb-[50px] bg-[url('assets/background/Hero-Banner.png')] bg-center bg-no-repeat bg-cover rounded-[32px] overflow-hidden absolute transform -translate-x-1/2 left-1/2">
+    <div style="background-image: url('{{asset('assets/background/Hero-Banner.png')}}');" id="hero-section" class="max-w-[1200px] mx-auto w-full h-[393px] flex flex-col gap-10 pb-[50px] bg-center bg-no-repeat bg-cover rounded-[32px] overflow-hidden absolute transform -translate-x-1/2 left-1/2">
         <nav class="flex justify-between items-center pt-6 px-[50px]">
             <a href="index.html">
-                <img src="assets/logo/onlcourse-logo.png" alt="logo">
+                <img src="{{asset('assets/logo/onlcourse-logo.png')}}" alt="logo">
             </a>
             <ul class="flex items-center gap-[30px] text-white">
                 <li>
@@ -39,7 +39,7 @@
                     <p class="p-[2px_10px] rounded-full bg-[#FF6129] font-semibold text-xs text-white text-center">PRO</p>
                 </div>
                 <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
-                    <img src="assets/photo/photo5.png" class="object-cover w-full h-full" alt="photo">
+                    <img src="{{asset('assets/photo/photo5.png')}}" class="object-cover w-full h-full" alt="photo">
                 </div>
             </div>
         </nav>
@@ -131,25 +131,25 @@
             <div class="flex items-center gap-5">
                 <div class="flex items-center gap-[6px]">
                     <div>
-                        <img src="assets/icon/crown.svg" alt="icon">
+                        <img src="{{asset('assets/icon/crown.svg')}}" alt="icon">
                     </div>
                     <p class="font-semibold">Data Science</p>
                 </div>
                 <div class="flex items-center gap-[6px]">
                     <div>
-                        <img src="assets/icon/award-outline.svg" alt="icon">
+                        <img src="{{asset('assets/icon/award-outline.svg')}}" alt="icon">
                     </div>
                     <p class="font-semibold">Certificate</p>
                 </div>
                 <div class="flex items-center gap-[6px]">
                     <div>
-                        <img src="assets/icon/profile-2user.svg" alt="icon">
+                        <img src="{{asset('assets/icon/profile-2user.svg')}}" alt="icon">
                     </div>
                     <p class="font-semibold">18,409 students</p>
                 </div>
                 <div class="flex items-center gap-[6px]">
                     <div>
-                        <img src="assets/icon/brifecase-tick.svg" alt="icon">
+                        <img src="{{asset('assets/icon/brifecase-tick.svg')}}" alt="icon">
                     </div>
                     <p class="font-semibold">Job-Guarantee</p>
                 </div>
@@ -179,25 +179,25 @@
                                 <div class="grid grid-cols-2 gap-x-[30px] gap-y-5">
                                     <div class="flex items-center gap-3 benefit-card">
                                         <div class="flex w-6 h-6 shrink-0">
-                                            <img src="assets/icon/tick-circle.svg" alt="icon">
+                                            <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
                                         </div>
                                         <p class="font-medium leading-[30px]">Dolor si amet exercise better garrer axia certificate guarantee job</p>
                                     </div>
                                     <div class="flex items-center gap-3 benefit-card">
                                         <div class="flex w-6 h-6 shrink-0">
-                                            <img src="assets/icon/tick-circle.svg" alt="icon">
+                                            <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
                                         </div>
                                         <p class="font-medium leading-[30px]">Dolor si amet exercise better garrer axia certificate guarantee job</p>
                                     </div>
                                     <div class="flex items-center gap-3 benefit-card">
                                         <div class="flex w-6 h-6 shrink-0">
-                                            <img src="assets/icon/tick-circle.svg" alt="icon">
+                                            <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
                                         </div>
                                         <p class="font-medium leading-[30px]">Dolor si amet exercise better garrer axia certificate guarantee job</p>
                                     </div>
                                     <div class="flex items-center gap-3 benefit-card">
                                         <div class="flex w-6 h-6 shrink-0">
-                                            <img src="assets/icon/tick-circle.svg" alt="icon">
+                                            <img src="{{asset('assets/icon/tick-circle.svg')}}" alt="icon">
                                         </div>
                                         <p class="font-medium leading-[30px]">Dolor si amet exercise better garrer axia certificate guarantee job</p>
                                     </div>
@@ -243,7 +243,7 @@
                             <div class="flex items-center justify-between w-full">
                                 <div class="flex items-center gap-3">
                                     <a href="" class="w-[50px] h-[50px] flex shrink-0 rounded-full overflow-hidden">
-                                        <img src="assets/photo/photo1.png" class="object-cover w-full h-full" alt="photo">
+                                        <img src="{{asset('assets/photo/photo1.png')}}" class="object-cover w-full h-full" alt="photo">
                                     </a>
                                     <div class="flex flex-col gap-[2px]">
                                         <a href="" class="font-semibold">Angga Risky</a>
@@ -258,7 +258,7 @@
                             
                             <div class="flex items-center gap-3">
                                 <div class="w-[50px] h-[50px] flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/icon/Group 7.svg" class="object-cover w-full h-full" alt="icon">
+                                    <img src="{{asset('assets/icon/Group 7.svg')}}" class="object-cover w-full h-full" alt="icon">
                                 </div>
                                 <div class="flex flex-col gap-[2px]">
                                     <div class="font-semibold">Spirit of Learning</div>
@@ -267,7 +267,7 @@
                             </div>
                             <div class="flex items-center gap-3">
                                 <div class="w-[50px] h-[50px] flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/icon/Group 7-1.svg" class="object-cover w-full h-full" alt="icon">
+                                    <img src="{{asset('assets/icon/Group 7-1.svg')}}" class="object-cover w-full h-full" alt="icon">
                                 </div>
                                 <div class="flex flex-col gap-[2px]">
                                     <div class="font-semibold">Everyday New</div>
@@ -276,7 +276,7 @@
                             </div>
                             <div class="flex items-center gap-3">
                                 <div class="w-[50px] h-[50px] flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/icon/Group 7-2.svg" class="object-cover w-full h-full" alt="icon">
+                                    <img src="{{asset('assets/icon/Group 7-2.svg')}}" class="object-cover w-full h-full" alt="icon">
                                 </div>
                                 <div class="flex flex-col gap-[2px]">
                                     <div class="font-semibold">Quick Learner Pro</div>
@@ -290,17 +290,17 @@
                 <div id="Screenshots" class="flex flex-col gap-3">
                     <h3 class="title-section font-bold text-xl leading-[30px] ">Students Portfolio</h3>
                     <div class="grid grid-cols-4 gap-5">
-                        <div class="rounded-[20px] overflow-hidden w-full h-[200px] hover:shadow-[0_10px_20px_0_#0D051D20] transition-all duration-300" data-src="assets/thumbnail/image.png" data-fancybox="gallery" data-caption="Caption #1">
-                          <img src="assets/thumbnail/image.png" class="object-cover w-full h-full" alt="image">
+                        <div class="rounded-[20px] overflow-hidden w-full h-[200px] hover:shadow-[0_10px_20px_0_#0D051D20] transition-all duration-300" data-src="{{asset('assets/thumbnail/image.png')}}" data-fancybox="gallery" data-caption="Caption #1">
+                          <img src="{{asset('assets/thumbnail/image.png')}}" class="object-cover w-full h-full" alt="image">
                         </div>
-                        <div class="rounded-[20px] overflow-hidden w-full h-[200px] hover:shadow-[0_10px_20px_0_#0D051D20] transition-all duration-300" data-src="assets/thumbnail/image-1.png" data-fancybox="gallery" data-caption="Caption #1">
-                          <img src="assets/thumbnail/image-1.png" class="object-cover w-full h-full" alt="image">
+                        <div class="rounded-[20px] overflow-hidden w-full h-[200px] hover:shadow-[0_10px_20px_0_#0D051D20] transition-all duration-300" data-src="{{asset('assets/thumbnail/image-1.png')}}" data-fancybox="gallery" data-caption="Caption #1">
+                          <img src="{{asset('assets/thumbnail/image-1.png')}}" class="object-cover w-full h-full" alt="image">
                         </div>
-                        <div class="rounded-[20px] overflow-hidden w-full h-[200px] hover:shadow-[0_10px_20px_0_#0D051D20] transition-all duration-300" data-src="assets/thumbnail/image-2.png" data-fancybox="gallery" data-caption="Caption #1">
-                          <img src="assets/thumbnail/image-2.png" class="object-cover w-full h-full" alt="image">
+                        <div class="rounded-[20px] overflow-hidden w-full h-[200px] hover:shadow-[0_10px_20px_0_#0D051D20] transition-all duration-300" data-src="{{asset('assets/thumbnail/image-2.png')}}" data-fancybox="gallery" data-caption="Caption #1">
+                          <img src="{{asset('assets/thumbnail/image-2.png')}}" class="object-cover w-full h-full" alt="image">
                         </div>
-                        <div class="rounded-[20px] overflow-hidden w-full h-[200px] hover:shadow-[0_10px_20px_0_#0D051D20] transition-all duration-300" data-src="assets/thumbnail/image-3.png" data-fancybox="gallery" data-caption="Caption #1">
-                          <img src="assets/thumbnail/image-3.png" class="object-cover w-full h-full" alt="image">
+                        <div class="rounded-[20px] overflow-hidden w-full h-[200px] hover:shadow-[0_10px_20px_0_#0D051D20] transition-all duration-300" data-src="{{asset('assets/thumbnail/image-3.png')}}" data-fancybox="gallery" data-caption="Caption #1">
+                          <img src="{{asset('assets/thumbnail/image-3.png')}}" class="object-cover w-full h-full" alt="image">
                         </div>
                     </div>
                 </div>
@@ -312,7 +312,7 @@
             <div class="flex flex-col gap-[30px]">
                 <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
                     <div>
-                        <img src="assets/icon/medal-star.svg" alt="icon">
+                        <img src="{{asset('assets/icon/medal-star.svg')}}" alt="icon">
                     </div>
                     <p class="font-medium text-sm text-[#FF6129]">Grow Your Career</p>
                 </div>
@@ -327,7 +327,7 @@
                     <button class="flex items-center justify-between gap-1 accordion-button" data-accordion="accordion-faq-1">
                         <span class="text-lg font-semibold text-left">Can beginner join the course?</span>
                         <div class="flex arrow w-9 h-9 shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
+                            <img src="{{asset('assets/icon/add.svg')}}" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-1" class="accordion-content hide">
@@ -338,7 +338,7 @@
                     <button class="flex items-center justify-between gap-1 accordion-button" data-accordion="accordion-faq-2">
                         <span class="text-lg font-semibold text-left">How long does the implementation take?</span>
                         <div class="flex arrow w-9 h-9 shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
+                            <img src="{{asset('assets/icon/add.svg')}}" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-2" class="accordion-content hide">
@@ -349,7 +349,7 @@
                     <button class="flex items-center justify-between gap-1 accordion-button" data-accordion="accordion-faq-3">
                         <span class="text-lg font-semibold text-left">Do you provide the job-guarantee program?</span>
                         <div class="flex arrow w-9 h-9 shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
+                            <img src="{{asset('assets/icon/add.svg')}}" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-3" class="accordion-content hide">
@@ -360,7 +360,7 @@
                     <button class="flex items-center justify-between gap-1 accordion-button" data-accordion="accordion-faq-4">
                         <span class="text-lg font-semibold text-left">How to issue all course certificates?</span>
                         <div class="flex arrow w-9 h-9 shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
+                            <img src="{{asset('assets/icon/add.svg')}}" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-4" class="accordion-content hide">
@@ -374,7 +374,7 @@
         <div class="flex justify-between">
             <a href="">
                 <div>
-                    <img src="assets/logo/logo-black.svg" alt="logo">
+                    <img src="{{asset('assets/logo/onlcourse-logo-black.png')}}" alt="logo">
                 </div>
             </a>
             <div class="flex flex-col gap-5">
@@ -433,7 +433,7 @@
             </div>
         </div>
         <div class="w-full h-[51px] flex items-end border-t border-[#E7EEF2]">
-            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved Alqowy BuildWithAngga 2024</p>
+            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved OnlCourse Robby Ilham 2025</p>
         </div>
     </footer>
 
