@@ -23,7 +23,7 @@ class FrontController extends Controller
 
         $user = Auth::user();
 
-        if ($user->hasActiveSubscription()) {
+        if (!$user->hasActiveSubscription()) {
             return redirect()->route('front.pricing');
         }
 
