@@ -101,7 +101,8 @@
                 </div>
                 <p class="font-semibold text-[28px] leading-[42px]">Rp 429000</p>
             </div>
-            <form class="w-full flex flex-col bg-white rounded-2xl p-5 gap-5">
+            <form method="POST" enctype="multipart/form-data" class="w-full flex flex-col bg-white rounded-2xl p-5 gap-5">
+                @csrf
                 <p class="font-bold text-lg">Send Payment</p>
                 <div class="flex flex-col gap-5">
                     <div class="flex items-center justify-between">
@@ -111,8 +112,8 @@
                             </div>
                             <p class="text-[#475466]">Bank Name</p>
                         </div>
-                        <p class="font-semibold">Angga Capital</p>
-                        <input type="hidden" name="bankName" value="Angga Capital">
+                        <p class="font-semibold">Bank Syariah Indonesia</p>
+                        <input type="hidden" name="bankName" value="Bank Syariah Indonesia">
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex gap-3">
@@ -131,8 +132,8 @@
                             </div>
                             <p class="text-[#475466]">Account Name</p>
                         </div>
-                        <p class="font-semibold">Alqowy Education First</p>
-                        <input type="hidden" name="accountName" value="Alqowy Education First">
+                        <p class="font-semibold">Robby Ilham</p>
+                        <input type="hidden" name="accountName" value="Robby Ilham">
                     </div>
                     <div class="flex items-center justify-between">
                         <div class="flex gap-3">
