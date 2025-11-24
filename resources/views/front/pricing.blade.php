@@ -16,15 +16,15 @@
 <body class="text-black font-poppins pt-10 pb-[50px]">
     <div id="hero-section" class="max-w-[1200px] mx-auto w-full h-[536px] flex flex-col gap-10 pb-[50px] bg-[url('assets/background/Hero-Banner.png')] bg-center bg-no-repeat bg-cover rounded-[32px] overflow-hidden relative">
         <nav class="flex justify-between items-center pt-6 px-[50px]">
-            <a href="index.html">
-                <img src="assets/logo/logo.svg" alt="logo">
+            <a href="{{ route('front.index') }}">
+                <img src="{{asset('assets/logo/onlcourse-logo.png')}}" alt="logo">
             </a>
             <ul class="flex items-center gap-[30px] text-white">
                 <li>
-                    <a href="" class="font-semibold">Home</a>
+                    <a href="{{ route('front.index') }}" class="font-semibold">Home</a>
                 </li>
                 <li>
-                    <a href="pricing.html" class="font-semibold">Pricing</a>
+                    <a href="{{ route('front.pricing') }}" class="font-semibold">Pricing</a>
                 </li>
                 <li>
                     <a href="" class="font-semibold">Benefits</a>
@@ -33,10 +33,31 @@
                     <a href="" class="font-semibold">Stories</a>
                 </li>
             </ul>
-            <div class="flex gap-[10px] items-center">
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
-            </div>
+
+            @auth
+                <div class="flex gap-[10px] items-center">
+                    <div class="flex flex-col items-end justify-center">
+                        <p class="font-semibold text-white">Hi, {{ Auth::user()->name }}</p>
+
+                        @if (Auth::user()->hasActiveSubscription())
+                            <p class="p-[2px_10px] rounded-full bg-[#FF6129] font-semibold text-xs text-white text-center">PRO</p>
+                        @endif
+                    </div>
+                    <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
+                        <a href="{{ route('dashboard') }}">
+                            <img src="{{ Storage::url(Auth::user()->avatar) }}" class="object-cover w-full h-full" alt="photo">
+                        </a>
+                    </div>
+                </div>
+            @endauth
+
+            @guest
+                <div class="flex gap-[10px] items-center">
+                    <a href="{{ route('register') }}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
+                    <a href="{{ route('login') }}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
+                </div>
+            @endguest
+            
         </nav>
     </div>
     <section class="max-w-[1100px] w-full mx-auto absolute -translate-x-1/2 left-1/2 top-[170px]">
@@ -122,7 +143,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="checkout.html" class="p-[20px_32px] bg-[#FF6129] text-white rounded-full text-center font-semibold text-xl transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Subscribe Now</a>
+                    <a href="{{ route('front.checkout') }}" class="p-[20px_32px] bg-[#FF6129] text-white rounded-full text-center font-semibold text-xl transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Subscribe Now</a>
                 </div>
             </div>
         </div>
@@ -640,7 +661,7 @@
         <div class="flex justify-between">
             <a href="">
                 <div>
-                    <img src="assets/logo/logo-black.svg" alt="logo">
+                    <img src="{{asset('assets/logo/onlcourse-logo-black.png')}}" alt="logo">
                 </div>
             </a>
             <div class="flex flex-col gap-5">
@@ -699,7 +720,7 @@
             </div>
         </div>
         <div class="w-full h-[51px] flex items-end border-t border-[#E7EEF2]">
-            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved Alqowy BuildWithAngga 2024</p>
+            <p class="mx-auto text-sm text-[#6D7786] -tracking-[2%]">All Rights Reserved OnlCourse Robby Ilham 2025</p>
         </div>
     </footer>
 
