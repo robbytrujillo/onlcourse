@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreSubscribeTransactionRequest;
+use App\Models\SubscribeTransaction;
 
 class FrontController extends Controller
 {
@@ -31,10 +32,10 @@ class FrontController extends Controller
         return view('front.checkout');
     }
 
-    public function checkout_store(StoreSubscribeTransactionRequest $request, User $user) {
+    public function checkout_store(StoreSubscribeTransactionRequest $request) {
         $user = Auth::user();
         
-        if (!$user->hasActiveSubscription()) {
+        if (Auth::user()->hasActiveSubscription()) {
             return redirect()->route('front.index');
         }
 
@@ -51,16 +52,16 @@ class FrontController extends Controller
                 $validated['total_amount'] = 429000;
                 $validated['is_paid'] = false;
 
-                $category = Category::create($validated);
+                $transaction = SubscribeTransaction::create($validated);
         });
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->route('dashboard');
     }
     public function learning(Course $course, $courseVideoId) {
 
         $user = Auth::user();
 
-        if (Auth::user()->hasActiveSubscription()) {
+        if (!$user->hasActiveSubscription()) {
             return redirect()->route('front.pricing');
         }
 

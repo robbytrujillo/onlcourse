@@ -155,7 +155,7 @@
                         </div>
                         <p id="fileLabel">Add a file attachment</p>
                     </button>
-                    <input id="file" type="file" name="file" class="hidden" onchange="updateFileName(this)">
+                    <input id="file" type="file" name="proof" class="hidden" onchange="updateFileName(this)">
                 </div>
                 <button class="p-[20px_32px] bg-[#FF6129] text-white rounded-full text-center font-semibold transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">I ve Made The Payment</button>
             </form>
