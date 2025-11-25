@@ -101,7 +101,7 @@
                 </div>
                 <p class="font-semibold text-[28px] leading-[42px]">Rp 429000</p>
             </div>
-            <form method="POST" enctype="multipart/form-data" class="w-full flex flex-col bg-white rounded-2xl p-5 gap-5">
+            <form action="{{ route('front.checkout.store') }}" method="POST" enctype="multipart/form-data" class="w-full flex flex-col bg-white rounded-2xl p-5 gap-5">
                 @csrf
                 <p class="font-bold text-lg">Send Payment</p>
                 <div class="flex flex-col gap-5">
