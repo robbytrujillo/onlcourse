@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./output.css" rel="stylesheet">
+  <link href="{{ asset('css/output.css') }}" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body class="text-black font-poppins pt-10 pb-[50px]">
-    <div id="hero-section" class="max-w-[1200px] mx-auto w-full flex flex-col gap-10 bg-[url('assets/background/Hero-Banner.png')] bg-center bg-no-repeat bg-cover rounded-[32px] overflow-hidden">
+    <div id="checkout-section" class="max-w-[1200px] mx-auto w-full min-h-[calc(100vh-40px)] flex flex-col gap-[30px] bg-[url('assets/background/Hero-Banner.png')] bg-center bg-no-repeat bg-cover rounded-t-[32px] overflow-hidden relative pb-6">
         <nav class="flex justify-between items-center py-6 px-[50px]">
-            <a href="index.html">
-                <img src="assets/logo/logo.svg" alt="logo">
+           <a href="{{ route('front.index') }}">
+                <img src="{{asset('assets/logo/onlcourse-logo.png')}}" alt="logo">
             </a>
-            <ul class="flex items-center gap-[30px] text-white"><link href="{{ asset('css/output.css') }}" rel="stylesheet">
+            <ul class="flex items-center gap-[30px] text-white">
                 <li>
-                    <a href="" class="font-semibold">Home</a>
+                    <a href="{{ route('front.index') }}" class="font-semibold">Home</a>
                 </li>
                 <li>
-                    <a href="pricing.html" class="font-semibold">Pricing</a>
+                    <a href="{{ route('front.pricing') }}" class="font-semibold">Pricing</a>
                 </li>
                 <li>
                     <a href="" class="font-semibold">Benefits</a>
@@ -26,17 +26,37 @@
                     <a href="" class="font-semibold">Stories</a>
                 </li>
             </ul>
-            <div class="flex gap-[10px] items-center">
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
-                <a href="" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
-            </div>
+
+            @auth
+                <div class="flex gap-[10px] items-center">
+                    <div class="flex flex-col items-end justify-center">
+                        <p class="font-semibold text-white">Hi, {{ Auth::user()->name }}</p>
+
+                        @if (Auth::user()->hasActiveSubscription())
+                            <p class="p-[2px_10px] rounded-full bg-[#FF6129] font-semibold text-xs text-white text-center">PRO</p>
+                        @endif
+                    </div>
+                    <div class="w-[56px] h-[56px] overflow-hidden rounded-full flex shrink-0">
+                        <a href="{{ route('dashboard') }}">
+                            <img src="{{ Storage::url(Auth::user()->avatar) }}" class="object-cover w-full h-full" alt="photo">
+                        </a>
+                    </div>
+                </div>
+            @endauth
+
+            @guest
+                <div class="flex gap-[10px] items-center">
+                    <a href="{{ route('register') }}" class="text-white font-semibold rounded-[30px] p-[16px_32px] ring-1 ring-white transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">Sign Up</a>
+                    <a href="{{ route('login') }}" class="text-white font-semibold rounded-[30px] p-[16px_32px] bg-[#FF6129] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FF612980]">Sign In</a>
+                </div>
+            @endguest
         </nav>
     </div>
     <section id="Top-Categories" class="max-w-[1200px] mx-auto flex flex-col py-[70px] px-[100px] gap-[30px]">
         <div class="flex flex-col gap-[30px]">
             <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
                 <div>
-                    <img src="assets/icon/medal-star.svg" alt="icon">
+                    <img src="{{asset('assets/icon/medal-star.svg')}}" alt="icon">
                 </div>
                 <p class="font-medium text-sm text-[#FF6129]">Top Categories</p>
             </div>
@@ -48,7 +68,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -56,19 +76,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">41 students</p>
@@ -76,7 +96,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo1.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo1.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Angga Risky</p>
@@ -89,7 +109,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image-1.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image-1.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -97,19 +117,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">41,070 students</p>
@@ -117,7 +137,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo3.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo3.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Muhamad Fadli</p>
@@ -130,7 +150,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image-2.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image-2.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -138,19 +158,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">521 students</p>
@@ -158,7 +178,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo3.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo3.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Muhamad Fadli</p>
@@ -171,7 +191,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image-3.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image-3.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -179,19 +199,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">521 students</p>
@@ -199,7 +219,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo3.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo3.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Muhamad Fadli</p>
@@ -212,7 +232,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -220,19 +240,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">41 students</p>
@@ -240,7 +260,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo1.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo1.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Angga Risky</p>
@@ -253,7 +273,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image-1.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image-1.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -261,19 +281,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">41,070 students</p>
@@ -281,7 +301,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo3.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo3.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Muhamad Fadli</p>
@@ -294,7 +314,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image-2.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image-2.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -302,19 +322,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">521 students</p>
@@ -322,7 +342,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo3.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo3.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Muhamad Fadli</p>
@@ -335,7 +355,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image-3.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image-3.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -343,19 +363,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">521 students</p>
@@ -363,7 +383,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo3.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo3.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Muhamad Fadli</p>
@@ -376,7 +396,7 @@
                 <div class="course-card">
                     <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
                         <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="assets/thumbnail/image.png" class="w-full h-full object-cover" alt="thumbnail">
+                            <img src="{{asset('assets/thumbnail/image.png')}}" class="w-full h-full object-cover" alt="thumbnail">
                         </a>
                         <div class="flex flex-col px-4 gap-[32px]">
                             <div class="flex flex-col gap-[10px]">
@@ -384,19 +404,19 @@
                                 <div class="flex justify-between items-center">
                                     <div class="flex items-center gap-[2px]">
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                         <div>
-                                            <img src="assets/icon/star.svg" alt="star">
+                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                                         </div>
                                     </div>
                                     <p class="text-right text-[#6D7786]">41 students</p>
@@ -404,7 +424,7 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                    <img src="assets/photo/photo1.png" class="w-full h-full object-cover" alt="icon">
+                                    <img src="{{asset('assets/photo/photo1.png')}}" class="w-full h-full object-cover" alt="icon">
                                 </div>
                                 <div class="flex flex-col">
                                     <p class="font-semibold">Angga Risky</p>
@@ -422,7 +442,7 @@
         <div class="flex flex-col gap-[30px] items-center text-center">
             <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
                 <div>
-                    <img src="assets/icon/medal-star.svg" alt="icon">
+                    <img src="{{asset('assets/icon/medal-star.svg')}}" alt="icon">
                 </div>
                 <p class="font-medium text-sm text-[#FF6129]">Zero to Success People</p>
             </div>
@@ -439,104 +459,104 @@
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
@@ -545,104 +565,104 @@
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                            <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                            <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                         </div>
                         <p class="font-semibold">Shayna</p>
                     </div>
                     <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                     <div class="flex gap-[2px]">
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                     </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                            <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                            <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                         </div>
                         <p class="font-semibold">Shayna</p>
                     </div>
                     <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                     <div class="flex gap-[2px]">
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                     </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                            <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                            <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                         </div>
                         <p class="font-semibold">Shayna</p>
                     </div>
                     <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                     <div class="flex gap-[2px]">
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                     </div>
                     </div>
@@ -653,104 +673,104 @@
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                     <div class="flex items-center gap-3">
                         <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                            <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                            <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                         </div>
                         <p class="font-semibold">Shayna</p>
                     </div>
                     <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                     <div class="flex gap-[2px]">
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                         <div>
-                            <img src="assets/icon/star.svg" alt="star">
+                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                         </div>
                     </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
@@ -759,104 +779,104 @@
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
                     <div class="test-card w-[300px] flex flex-col h-full bg-white rounded-xl gap-3 p-5">
                         <div class="flex items-center gap-3">
                             <div class="w-8 h-8 flex shrink-0 rounded-full overflow-hidden">
-                                <img src="assets/photo/photo4.png" class="w-full h-full object-cover" alt="photo">
+                                <img src="{{asset('assets/photo/photo4.png')}}" class="w-full h-full object-cover" alt="photo">
                             </div>
                             <p class="font-semibold">Shayna</p>
                         </div>
                         <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                             <div>
-                                <img src="assets/icon/star.svg" alt="star">
+                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
                             </div>
                         </div>
                     </div>
@@ -869,7 +889,7 @@
             <div class="flex flex-col gap-[30px]">
                 <div class="gradient-badge w-fit p-[8px_16px] rounded-full border border-[#FED6AD] flex items-center gap-[6px]">
                     <div>
-                        <img src="assets/icon/medal-star.svg" alt="icon">
+                        <img src="{{asset('assets/icon/medal-star.svg')}}" alt="icon">
                     </div>
                     <p class="font-medium text-sm text-[#FF6129]">Grow Your Career</p>
                 </div>
@@ -884,7 +904,7 @@
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-1">
                         <span class="font-semibold text-lg text-left">Can beginner join the course?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
+                            <img src="{{asset('assets/icon/add.svg')}}" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-1" class="accordion-content hide">
@@ -895,7 +915,7 @@
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-2">
                         <span class="font-semibold text-lg text-left">How long does the implementation take?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
+                            <img src="{{asset('assets/icon/add.svg')}}" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-2" class="accordion-content hide">
@@ -906,7 +926,7 @@
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-3">
                         <span class="font-semibold text-lg text-left">Do you provide the job-guarantee program?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
+                            <img src="{{asset('assets/icon/add.svg')}}" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-3" class="accordion-content hide">
@@ -917,7 +937,7 @@
                     <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-4">
                         <span class="font-semibold text-lg text-left">How to issue all course certificates?</span>
                         <div class="arrow w-9 h-9 flex shrink-0">
-                            <img src="assets/icon/add.svg" alt="icon">
+                            <img src="{{asset('assets/icon/add.svg')}}" alt="icon">
                         </div>
                     </button>
                     <div id="accordion-faq-4" class="accordion-content hide">
@@ -931,7 +951,7 @@
         <div class="flex justify-between">
             <a href="">
                 <div>
-                    <img src="assets/logo/logo-black.svg" alt="logo">
+                    <img src="{{asset('assets/logo/logo-black.svg')}}" alt="logo">
                 </div>
             </a>
             <div class="flex flex-col gap-5">
