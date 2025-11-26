@@ -65,47 +65,53 @@
             </div>
             <div class="grid grid-cols-3 gap-[30px] w-full">
                 
-                <div class="course-card">
-                    <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
-                        <a href="details.html" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
-                            <img src="{{asset('assets/thumbnail/image.png')}}" class="object-cover w-full h-full" alt="thumbnail">
-                        </a>
-                        <div class="flex flex-col px-4 gap-[32px]">
-                            <div class="flex flex-col gap-[10px]">
-                                <a href="details.html" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">Modern JavaScript: Bikin Projek Website Seperti Twitter</a>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-[2px]">
-                                        <div>
-                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
+                @forelse ($courses as $course)
+                    <div class="course-card">
+                        <div class="flex flex-col rounded-t-[12px] rounded-b-[24px] gap-[32px] bg-white w-full pb-[10px] overflow-hidden ring-1 ring-[#DADEE4] transition-all duration-300 hover:ring-2 hover:ring-[#FF6129]">
+                            <a href="{{ route('front.details', $course->slug) }}" class="thumbnail w-full h-[200px] shrink-0 rounded-[10px] overflow-hidden">
+                                <img src="{{ Storage::url($course->thumbnail) }}" class="object-cover w-full h-full" alt="thumbnail">
+                            </a>
+                            <div class="flex flex-col px-4 gap-[32px]">
+                                <div class="flex flex-col gap-[10px]">
+                                    <a href="{{ route('front.details', $course->slug) }}" class="font-semibold text-lg line-clamp-2 hover:line-clamp-none min-h-[56px]">{{ $course->name }}</a>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-[2px]">
+                                            <div>
+                                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
+                                            </div>
+                                            <div>
+                                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
+                                            </div>
+                                            <div>
+                                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
+                                            </div>
+                                            <div>
+                                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
+                                            </div>
+                                            <div>
+                                                <img src="{{asset('assets/icon/star.svg')}}" alt="star">
+                                            </div>
                                         </div>
-                                        <div>
-                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
-                                        </div>
-                                        <div>
-                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
-                                        </div>
-                                        <div>
-                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
-                                        </div>
-                                        <div>
-                                            <img src="{{asset('assets/icon/star.svg')}}" alt="star">
-                                        </div>
+                                        <p class="text-right text-[#6D7786]">{{ $course->students->count() }} students</p>
                                     </div>
-                                    <p class="text-right text-[#6D7786]">41 students</p>
                                 </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
-                                    <img src="{{asset('assets/photo/photo1.png')}}" class="object-cover w-full h-full" alt="icon">
-                                </div>
-                                <div class="flex flex-col">
-                                    <p class="font-semibold">Angga Risky</p>
-                                    <p class="text-[#6D7786]">Full-Stack Developer</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
+                                        <img src="{{ Storage::url($course->teacher->user->avatar) }}" class="object-cover w-full h-full" alt="icon">
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <p class="font-semibold">{{ $course->teacher->user->name }}</p>
+                                        <p class="text-[#6D7786]">{{ $course->teacher->user->occupation }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @empty
+                    <p>
+                        Belum ada data Course
+                    </p>
+                @endforelse
                 
                 
             </div>

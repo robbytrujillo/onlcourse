@@ -24,15 +24,25 @@ class FrontController extends Controller
         return view('front.details', compact('course'));
     }
 
-    public function category() {
-        return view('front.category');
+    public function category(Category $category) {
+        $courses = $category->courses()->get();
+
+        return view('front.category', compact('courses'));
     }
     
     public function pricing() {
+        if (Auth::user()->hasActiveSubscription()) {
+            return redirect()->route('front.index');
+        }
+        
         return view('front.pricing');
     }
     
     public function checkout() {
+        if (Auth::user()->hasActiveSubscription()) {
+            return redirect()->route('front.index');
+        }
+        
         return view('front.checkout');
     }
 
