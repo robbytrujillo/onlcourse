@@ -285,9 +285,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -311,9 +311,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -337,9 +337,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -363,9 +363,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -391,9 +391,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -417,9 +417,9 @@
                         <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                             <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                         </div>
-                        <p class="font-semibold">Shayna</p>
+                        <p class="font-semibold">Andrea</p>
                     </div>
-                    <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                    <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                     <div class="flex gap-[2px]">
                         <div>
                             <img src="assets/icon/star.svg" alt="star">
@@ -443,9 +443,9 @@
                         <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                             <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                         </div>
-                        <p class="font-semibold">Shayna</p>
+                        <p class="font-semibold">Andrea</p>
                     </div>
-                    <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                    <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                     <div class="flex gap-[2px]">
                         <div>
                             <img src="assets/icon/star.svg" alt="star">
@@ -469,9 +469,9 @@
                         <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                             <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                         </div>
-                        <p class="font-semibold">Shayna</p>
+                        <p class="font-semibold">Andrea</p>
                     </div>
-                    <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                    <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                     <div class="flex gap-[2px]">
                         <div>
                             <img src="assets/icon/star.svg" alt="star">
@@ -499,9 +499,9 @@
                         <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                             <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                         </div>
-                        <p class="font-semibold">Shayna</p>
+                        <p class="font-semibold">Andrea</p>
                     </div>
-                    <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                    <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                     <div class="flex gap-[2px]">
                         <div>
                             <img src="assets/icon/star.svg" alt="star">
@@ -525,9 +525,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -551,9 +551,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -577,9 +577,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -605,9 +605,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -631,9 +631,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -657,9 +657,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
@@ -683,9 +683,9 @@
                             <div class="flex w-8 h-8 overflow-hidden rounded-full shrink-0">
                                 <img src="assets/photo/photo4.png" class="object-cover w-full h-full" alt="photo">
                             </div>
-                            <p class="font-semibold">Shayna</p>
+                            <p class="font-semibold">Andrea</p>
                         </div>
-                        <p class="text-sm text-[#475466]">Alqowy has helped me to grow from zero to perfect career, thank you!</p>
+                        <p class="text-sm text-[#475466]">OnlCourse has helped me to grow from zero to perfect career, thank you!</p>
                         <div class="flex gap-[2px]">
                             <div>
                                 <img src="assets/icon/star.svg" alt="star">
