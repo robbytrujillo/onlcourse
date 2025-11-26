@@ -62,7 +62,7 @@
             </div>
             <div class="flex flex-col gap-[10px]">
                 <h1 class="font-semibold text-[80px] leading-[82px] text-center gradient-text-hero">Build Future Career.</h1>
-                <p class="text-center text-xl leading-[36px] text-[#F5F8FA]">Alqowy provides high quality online courses for you to grow <br>
+                <p class="text-center text-xl leading-[36px] text-[#F5F8FA]">Onlcourse provides high quality online courses for you to grow <br>
                     your skills and build outstanding portfolio to tackle job interviews</p>
             </div>
             <div class="flex gap-6 w-fit">
