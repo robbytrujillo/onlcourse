@@ -31,7 +31,7 @@ class FrontController extends Controller
     }
     
     public function pricing() {
-        if (Auth::user()->hasActiveSubscription()) {
+        if (Auth::check() && Auth::user()->hasActiveSubscription()) {
             return redirect()->route('front.index');
         }
         
